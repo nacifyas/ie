@@ -22,4 +22,4 @@ async def index():
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=Settings().port, reload=Settings().dev_mode)
+    uvicorn.run("main:app", host="0.0.0.0", port=8080 if Settings().dev_mode else 80, reload=Settings().dev_mode)

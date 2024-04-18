@@ -5,7 +5,6 @@ from pydantic import RedisDsn
 class Settings(BaseSettings):
     dev_mode: bool = False
     encoding: str = "utf-8"
-    port: int = 80
     redis_db: RedisDsn
 
 
