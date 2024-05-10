@@ -16,7 +16,7 @@ def logging_setup() -> None:
     logger.handlers[0].setFormatter(console_formatter)
 
 
-@app.get("")
+@app.get("/")
 async def index():
     return "Hello there"
 
