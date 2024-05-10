@@ -7,7 +7,7 @@ WORKDIR /ie
 
 COPY . .
 
-RUN pip install --no-cache-dir --upgrade .
+RUN pip install --no-cache-dir --upgrade /ie
 
 EXPOSE 80
 
