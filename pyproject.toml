@@ -19,5 +19,5 @@ dependencies = [
 ]
 
 
-# [tool.setuptools]
-# py-modules = ["app"]
+[tool.setuptools]
+py-modules = ["app"]
