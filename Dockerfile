@@ -5,10 +5,10 @@ RUN export DEBIAR_FRONTEND=noninteractive \
 
 WORKDIR /ie
 
-COPY . /ie
+COPY . .
 
-RUN pip install --no-cache-dir --upgrade /ie/.
+RUN pip install --no-cache-dir --upgrade .
 
 EXPOSE 80
 
-CMD ["python3", "-m", "/ie/app/main.py"]
+CMD ["python3","/ie/app/main.py"]

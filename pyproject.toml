@@ -1,12 +1,12 @@
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "ie"
 version = "1.1"
 authors = [
-    {name="Nassh",email="nacifyas@gmail.com"}
+    {name="Nassh",email="yasnac@alum.us.es"}
 ]
 description = "FastAPI powered backend for IE project"
 readme = "README.md"
@@ -19,5 +19,5 @@ dependencies = [
 ]
 
 
-[tool.setuptools]
-py-modules = ["app"]
+# [tool.setuptools]
+# py-modules = ["app"]
