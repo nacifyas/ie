@@ -1,10 +1,12 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from app.settings import Settings
 import uvicorn, logging
 
 
 app = FastAPI()
-
+app.mount("/static", StaticFiles(directory="app/web"), name="static")
 
 @app.on_event("startup")
 def logging_setup() -> None:
@@ -16,9 +18,11 @@ def logging_setup() -> None:
     logger.handlers[0].setFormatter(console_formatter)
 
 
-@app.get("/")
-async def index():
-    return "Hello there"
+@app.get("/", response_class=HTMLResponse)
+async def read_root():
+    with open("app/web/index.html", "r") as file:
+        html_content = file.read()
+    return html_content
 
 
 if __name__ == "__main__":
