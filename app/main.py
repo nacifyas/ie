@@ -1,12 +1,17 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from routes.gui import gui
+from routes.api import api
 from app.settings import Settings
 import uvicorn, logging
 
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/web"), name="static")
+app.include_router(gui.router, prefix="/dashboard")
+app.include_router(api.router, prefix="/api")
+
 
 @app.on_event("startup")
 def logging_setup() -> None:
@@ -18,11 +23,9 @@ def logging_setup() -> None:
     logger.handlers[0].setFormatter(console_formatter)
 
 
-@app.get("/", response_class=HTMLResponse)
-async def read_root():
-    with open("app/web/index.html", "r") as file:
-        html_content = file.read()
-    return html_content
+@app.get("/", response_class=RedirectResponse)
+async def redirect_to_dashboard():
+    return "/dashboard"
 
 
 if __name__ == "__main__":

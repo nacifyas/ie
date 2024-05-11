@@ -17,27 +17,3 @@ setup(
         'redis-om==0.2.2',
     ],
 )
-
-# [build-system]
-# requires = ["setuptools"]
-# build-backend = "setuptools.build_meta"
-
-# [project]
-# name = "ie"
-# version = "1.1"
-# authors = [
-#     {name="Nassh",email="nacifyas@gmail.com"}
-# ]
-# description = "FastAPI powered backend for IE project"
-# readme = "README.md"
-# requires-python = ">=3.12"
-# license = {file = "LICENCE"}
-# dependencies = [
-#     "uvicorn[standart]",
-#     "fastapi[all]==0.110.1",
-#     "redis-om==0.2.2",
-# ]
-
-
-# [tool.setuptools]
-# py-modules = ["app"]
