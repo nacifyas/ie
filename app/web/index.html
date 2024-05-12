@@ -6,12 +6,20 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+
+<body class="light-mode">
     <div class="dashboard">
         <h1>Welcome to the Dashboard!</h1>
         <p>This is a simple dashboard web app.</p>
         <div id="data"></div>
+        <canvas id="myChart"></canvas>
+        <!-- Button to toggle dark mode -->
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
     </div>
     <script src="/static/script.js"></script>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+
+
 </html>

@@ -15,5 +15,8 @@ setup(
         'uvicorn[standard]',
         'fastapi[all]==0.110.1',
         'redis-om==0.2.2',
+        # 'pandas==2.2.2',
+        # 'seaborn==0.13.2',
+        # 'matplotlib==3.8.4'
     ],
 )

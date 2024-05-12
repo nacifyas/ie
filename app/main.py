@@ -14,7 +14,7 @@ app.include_router(api.router, prefix="/api")
 
 
 @app.on_event("startup")
-def logging_setup() -> None:
+async def logging_setup() -> None:
     logger = logging.getLogger("uvicorn.access")
     console_formatter = uvicorn.logging.ColourizedFormatter(
         "{levelprefix} {asctime} {message}",

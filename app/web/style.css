@@ -1,3 +1,4 @@
+/* Common styles for both light and dark mode */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,7 +9,6 @@ body {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #f0f0f0;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -19,4 +19,15 @@ body {
 
 .dashboard p {
     color: #666;
+}
+
+/* Light mode specific styles */
+body.light-mode {
+    background-color: #b0b0b0;
+}
+
+/* Dark mode specific styles */
+body.dark-mode {
+    background-color: #222;
+    color: #fff;
 }
