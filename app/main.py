@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from app.models.pibyd import PIByDDB
@@ -9,7 +9,7 @@ import uvicorn, logging, platform, sys, asyncio
 
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="app/web"), name="static")
+app.mount("/assets", StaticFiles(directory="app/web/assets"), name="assets")
 app.include_router(api.router, prefix="/api")
 
 app.add_middleware(
@@ -36,12 +36,9 @@ async def setup() -> None:
 
 
 
-@app.get("/dashboard", response_class=HTMLResponse)
-async def dashboard():
-    with open("app/web/index.html", "r") as file:
-        html_content = file.read()
-    return html_content
-
+@app.get("/")
+async def index():
+    return FileResponse("app/web/index.html")
 
 
 @app.get("/", response_class=RedirectResponse)
