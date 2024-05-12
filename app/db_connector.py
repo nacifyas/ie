@@ -1,4 +1,4 @@
-from aredis_om import get_redis_connection, Migrator
+from aredis_om import get_redis_connection
 from app.settings import Settings
 
 
