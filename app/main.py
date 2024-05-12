@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 from app.models.pibyd import PIByDDB
 from routes.api import api
 from app.settings import Settings
@@ -11,6 +12,13 @@ app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/web"), name="static")
 app.include_router(api.router, prefix="/api")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
 
 @app.on_event("startup")
 async def setup() -> None:

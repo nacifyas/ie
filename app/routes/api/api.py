@@ -16,7 +16,7 @@ async def dashboard():
 @router.get("/pibdesempleo")
 async def api() -> list[PIByD]:
     corr_array = [PIByDDB.get(pk) async for pk in await PIByDDB.all_pks()]
-    return list(asyncio.gather(*corr_array))
+    return sorted(await asyncio.gather(*corr_array), key=lambda x: x.date)
 
 
 @router.post("/pibdesempleo")
