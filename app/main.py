@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, RedirectResponse, FileResponse
+from fastapi.responses import RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from app.models.pibyd import PIByDDB
+from app.models.embarazo import EmbarazosDB
 from routes.api import api
 from app.settings import Settings
 import uvicorn, logging, platform, sys, asyncio
@@ -28,7 +29,9 @@ async def setup() -> None:
         style="{",
         use_colors=True)
     logger.handlers[0].setFormatter(console_formatter)
+    print(f"Connected to Redis: {Settings().redis_db}")
     await PIByDDB.migrate()
+    await EmbarazosDB.migrate()
     if sys.platform == 'win32' or  platform.system()=='Windows':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
         loop = asyncio.ProactorEventLoop()
