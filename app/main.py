@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.responses import RedirectResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from db_connector import redis
 from app.models.pibyd import PIByDDB
 from app.models.embarazo import EmbarazosDB
 from routes.api import api
