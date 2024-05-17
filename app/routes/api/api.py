@@ -26,6 +26,12 @@ async def new(entrada: PIByD) -> str:
     return db_pibd.pk
 
 
+@router.delete("/pibdesempleo")
+async def cleans() -> int:
+    corr_array = [PIByDDB.delete(pk) async for pk in await PIByDDB.all_pks()]
+    return sum(await asyncio.gather(*corr_array))
+
+
 @router.get("/embarazo")
 async def api() -> list[Embarazos]:
     corr_array = [EmbarazosDB.get(pk) async for pk in await EmbarazosDB.all_pks()]
@@ -33,8 +39,12 @@ async def api() -> list[Embarazos]:
 
 
 @router.post("/embarazo")
-async def new(entrada: Embarazos) -> str:
+async def nue(entrada: Embarazos) -> str:
     db_emb = await EmbarazosDB(**entrada.model_dump()).save()
     return db_emb.pk
 
 
+@router.delete("/embarazo")
+async def clean() -> int:
+    corr_array = [EmbarazosDB.delete(pk) async for pk in await EmbarazosDB.all_pks()]
+    return sum(await asyncio.gather(*corr_array))
