@@ -37,7 +37,7 @@ async def vaciar_datos_pib() -> int:
 async def datos_embarazo(limit: int = Query(100, ge=0, le=100), offset: int = Query(0, ge=0)) -> list[Embarazos]:
     keys = await redis.lrange("pregnancy", offset, offset+limit-1)
     corr_array = [EmbarazosDB.get(pk) for pk in keys]
-    return sorted(await asyncio.gather(*corr_array), key=lambda x: x.income)
+    return list(await asyncio.gather(*corr_array))
 
 
 @router.post("/embarazo")
