@@ -7,6 +7,7 @@ class EmbarazosDB(HashModel):
     age: int
     income: str
     anxiety: int
+    depression: int
     mother_risk: int
     baby_risk: int
     baby_problems: int 
@@ -24,6 +25,7 @@ class EmbarazosDB(HashModel):
 class Embarazos(BaseModel):
     age: int
     income: str
+    depression: int
     anxiety: int
     mother_risk: int
     baby_risk: int
